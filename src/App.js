@@ -1,24 +1,145 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import Home from './Component/Home/Home1/Home.js'
+
+import NotFound from "./Component/NotFound/NotFound.js"
+import Navbar from "./Component/Navbar/Navbar.js"
+import FullPage from "./Component/Home/Home1/Newhome/BoomHome/FullPage/FullPage"
+import FormCV from "./Components2/FormCV/FormCV"
+import FirstPage from './Component/FirstPage/FirstPage'
+import Login from './Component/Login/Login'
+import PrivateRoute from './Component/PrivateRoute/PrivateRoute'
+import SignUp from './Component/SignUp/SignUp'
+import CardUser from './Components2/CardUser/CardUser'
+
+
+import Admin from "./Components2/AdminPage/Admin"
+
+import Company from "./Components3/Company/Company"
+import NewPrivateRouter from './Components4/NewPrivateRouter/NewPrivateRouter'
+import CompanyLogin from './Components4/CompanyLogin/CompanyLogin'
+import CompanySignUp from './Components4/CompanySignUp/CompanySignUp'
+
+
+
+
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   
+
+     <Router>
+
+      <Route>
+
+           <Navbar />
+           
+     </Route>
+
+    
+
+
+      <div>
+       
+
+
+        <Switch>
+        <Route exact path="/">
+            <FirstPage />
+          </Route>
+
+
+          <Route  path="/home">
+            <Home />
+          </Route>
+
+
+          <Route path="/fullpage/:id">
+            <FullPage></FullPage>
+           
+          </Route>
+
+          <PrivateRoute path="/FormCV/:id">
+            <FormCV></FormCV>
+           
+          </PrivateRoute>
+
+
+          <Route path="/login">
+            <Login />
+          </Route>
+
+          <NewPrivateRouter path="/company">
+            <Company />
+          </NewPrivateRouter>
+{/* 
+           <Route path="/company">
+            <Company />
+          </Route> */}
+
+          <PrivateRoute path="/carduser">
+            <CardUser />
+          </PrivateRoute>
+
+
+           <Route path="/signup">
+            <SignUp />
+          </Route>
+          <Route path="/companysignup">
+            <CompanySignUp />
+          </Route>
+          <Route path="/companylogin">
+            <CompanyLogin />
+          </Route>
+
+          
+
+
+
+           {/* <Route exact path="/registration">
+            <Registration />
+          </Route>
+
+          <Route exact path="/event">
+            <Event />
+          </Route> */}
+
+
+
+
+           <Route path="/admin">
+            <Admin />
+          </Route>
+         
+
+
+
+
+          <Route path="*">
+            <NotFound />
+          </Route>
+          
+
+
+          
+          
+
+        </Switch>
+
+
+        
+
+
+
+      </div>
+    </Router>
   );
 }
 
